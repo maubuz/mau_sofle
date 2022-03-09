@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |      |CTL_W |ALT_F4|      |      |                    |   \  |  XX  |  XX  |   (  |   )  | F12  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Caps |CTL_A |      |      |      |      |-------.    ,-------|  XX  |  XX  |  XX  |   {  |   }  |   |  |
+ * | Caps |CTL_A |      |      |      |      |-------.    ,-------|  XX  |  XX  |  XX  |   {  |   }  |  XX  |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * | Shift|CTL_Z | CTL_X| CTL_C| CTL_V| CTL_Y|-------|    |-------|  XX  |  XX  |  XX  |   [  |   ]  |  XX  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                         KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
   KC_TRNS, KC_TRNS, CTL_W,   ALT_F4,  KC_TRNS, KC_TRNS,                       KC_BSLS, KC_NO,   KC_NO,   KC_LPRN, KC_RPRN, KC_F12,
   KC_CAPS, CTL_A,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_NO,   KC_NO,   KC_NO,   KC_LCBR, KC_RCBR, KC_NO,
-  KC_TRNS, CTL_Z,   CTL_X,   CTL_C,   CTL_V,   CTL_Y,   KC_TRNS,     _______, KC_LBRC, KC_RBRC, KC_SCLN, KC_COLN, KC_BSLS, _______,
+  KC_TRNS, CTL_Z,   CTL_X,   CTL_C,   CTL_V,   CTL_Y,   KC_TRNS,     _______, KC_NO,   KC_NO,   KC_NO,   KC_LBRC, KC_RBRC, KC_NO,
                     _______, _______, _______, _______, KC_SPC,      _______, KC_ADJUST, _______, _______, _______
 ),
 /* RAISE
