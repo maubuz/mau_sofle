@@ -3,6 +3,9 @@
 
 // WIP. Unused custom keys have not been removed.
 
+// Docker usage quick-refernce:
+// sudo ~/Code/qmk_firmware/util/docker_build.sh sofle:mau_sofle:flash
+
 
 #include QMK_KEYBOARD_H
 
@@ -30,7 +33,7 @@ enum custom_keycodes {
 // Mau defined keycodes
 #define XX XXXXXXX                 // Shorten the None key
 
-#define M_ESC MT( MO(1), KC_ESC)
+#define M_ESC LT(_RAISE, KC_ESC)
 
 #define LGUI_A  LGUI_T(KC_A)        // Left GUI when held, kc when tapped
 #define LALT_S  LALT_T(KC_S)        // Left Alt when held, kc when tapped
@@ -50,6 +53,8 @@ enum custom_keycodes {
 #define CTL_C   LCTL(KC_C)
 #define CTL_V   LCTL(KC_V)
 #define CTL_Y   LCTL(KC_Y)
+#define C_TOP  LCTL(KC_HOME)
+#define C_BTM  LCTL(KC_END)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -80,9 +85,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |  F1  |  F2  |  F3  |  F4  |  F5  |                    |  F6  |  F7  |  F8  |  F9  | F10  | F11  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |CTL_W |ALT_F4|      |      |                    |   \  |  XX  |  XX  |   (  |   )  | F12  |
+ * |      |      |CTL_W |ALT_F4|      | C_TOP|                    |   \  |  XX  |  XX  |   (  |   )  | F12  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Caps |CTL_A |      |      |      |      |-------.    ,-------|  XX  |  XX  |  XX  |   {  |   }  |  XX  |
+ * | Caps |CTL_A |      |      |      | C_BTM|-------.    ,-------|  XX  |  XX  |  XX  |   {  |   }  |  XX  |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * | Shift|CTL_Z | CTL_X| CTL_C| CTL_V| CTL_Y|-------|    |-------|  XX  |  XX  |  XX  |   [  |   ]  |  XX  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -92,8 +97,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT(
   _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                         KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-  KC_TRNS, KC_TRNS, CTL_W,   ALT_F4,  KC_TRNS, KC_TRNS,                       KC_BSLS, KC_NO,   KC_NO,   KC_LPRN, KC_RPRN, KC_F12,
-  KC_CAPS, CTL_A,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_NO,   KC_NO,   KC_NO,   KC_LCBR, KC_RCBR, KC_NO,
+  KC_TRNS, KC_TRNS, CTL_W,   ALT_F4,  KC_TRNS, C_TOP,                         KC_BSLS, KC_NO,   KC_NO,   KC_LPRN, KC_RPRN, KC_F12,
+  KC_CAPS, CTL_A,   KC_TRNS, KC_TRNS, KC_TRNS, C_BTM,                       KC_NO,   KC_NO,   KC_NO,   KC_LCBR, KC_RCBR, KC_NO,
   KC_TRNS, CTL_Z,   CTL_X,   CTL_C,   CTL_V,   CTL_Y,   KC_TRNS,     _______, KC_NO,   KC_NO,   KC_NO,   KC_LBRC, KC_RBRC, KC_NO,
                     _______, _______, _______, _______, KC_SPC,      _______, KC_ADJUST, _______, _______, _______
 ),
@@ -107,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------|  XX  | Bspc |  Del |  XX  |  XX  |  XX  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            |      |      |      |      | /       /       \      \  |      |      |      |      |
+ *            |      |      |      |      | /Delete /       \      \  |      |      |      |      |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
@@ -116,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                          KC_APP,   KC_PGUP,  KC_UP,    KC_PGDN,    KC_PSCR,  KC_F12,
   _______, _______, _______, _______, _______, _______,                          KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,    KC_END,   KC_ENT,
   _______, _______, _______, _______, _______, _______, _______,        _______, KC_NO,    KC_BSPC,  KC_DEL,   KC_NO,      KC_NO,    KC_NO,
-                    _______, _______, _______, _______, _______,        _______, _______,  _______,  _______,  _______
+                    _______, _______, _______, _______, KC_DEL,         _______, _______,  _______,  _______,  _______
 ),
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
