@@ -1,8 +1,9 @@
 #pragma once
 
-
 // Custom settings by Mau
-#define IGNORE_MOD_TAP_INTERRUPT    // to help with home roll modifiers
+
+//rm Jan 2025, default nom
+//#define IGNORE_MOD_TAP_INTERRUPT    // to help with home roll modifiers
 
 #ifdef TAPPING_TERM
     #undef TAPPING_TERM
